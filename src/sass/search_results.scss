@@ -49,6 +49,7 @@
 }
 
 #search-results {
+  @include transition(padding $trns-medium-ease);
   @include box-sizing(border-box);
   position: absolute;
   padding-top: 50px;
@@ -186,12 +187,14 @@
 
 .expanded-listing-wrap {
   @include transition( transform $trns-medium-ease);
+  @include prefixer(transition-delay, 0s);
   @include transform(translate3d(100%,0,0));
   position: absolute;
   width: 75%;
   text-align: center;
   top: 70px;
   left: 25%;
+  opacity: 0;
 }
 
 #search-results-main.expanded-listing {
@@ -277,5 +280,7 @@
 
   .expanded-listing-wrap {
     @include transform(translate3d(0,0,0));
+    @include prefixer(transition-delay, 1s);
+    opacity: 1;
   }
 }
