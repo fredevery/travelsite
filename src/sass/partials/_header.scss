@@ -1,0 +1,84 @@
+header {
+  @include clearfix;
+  background:$dark-blue;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  .logo {
+    font-family: $header-font;
+    color: $white;
+    float: left;
+    line-height: 50px;
+    padding: 0 15px;
+    font-size: 22px;
+    font-weight: 600;
+
+    .dot-com {
+      color: $light-blue;
+    }
+  }
+
+  .right {
+    float: right;
+
+    a {
+      @include transition(background-color $trns-quick-linear);
+      background-color: $dark-blue;
+      float: left;
+      padding: 0 16px;
+      line-height: 50px;
+      border-left: 1px solid lighten($dark-blue, 10%);
+      color: $white;
+      font-size: 14px;
+      height: 50px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken($dark-blue, 10%);
+      }
+
+      &.register-btn {
+        padding-right: 8px;
+      }
+
+      &.sign-in-btn {
+        border-left: none;
+        padding-left: 8px;
+      }
+    }
+  }
+
+  .flag {
+    display: block;
+    background: url('/build/imgs/header/rsa_flag.png') no-repeat center center;
+    height: 50px;
+    width: 24px;
+    vertical-align: middle;
+  }
+
+  .travel-tips-marker {
+    @include background-size(contain);
+    background-image: url('/build/imgs/header/travel_tips_marker.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: block;
+    height: 50px;
+    width: 31px;
+  }
+
+  .register-signin-btns {
+    float: left;
+    border-left: 1px solid lighten($dark-blue, 10%);
+    height: 50px;
+    line-height: 48px;
+    padding: 0 15px 0 11px;
+
+    button {
+      margin: 0 5px;
+    }
+  }
+}

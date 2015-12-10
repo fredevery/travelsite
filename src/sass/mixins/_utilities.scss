@@ -1,0 +1,13 @@
+@mixin inline-block {
+  display: -moz-inline-stack;	// ff 2
+  display: inline-block;
+  zoom:1; *display: inline; _height: 15px; // ie 6-7
+}
+
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}

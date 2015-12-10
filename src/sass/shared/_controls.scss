@@ -1,0 +1,38 @@
+button,
+input[type="submit"] {
+  // @include border-radius(4px);
+  @include transition(
+    color $trns-quick-linear,
+    background-color $trns-quick-linear
+  );
+  font-family: $header-font;
+  color: $dark-blue;
+  background: $white;
+  line-height: 30px;
+  height: 30px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  padding: 0 15px;
+  line-height: 1;
+  cursor: pointer;
+  border: none;
+  vertical-align: middle;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    background-color: $light-blue;
+    color: $white;
+  }
+}
+
+input[type="submit"],
+button.blue {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  background-color: $dark-blue;
+  color: $white;
+  float: right;
+}

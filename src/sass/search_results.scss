@@ -1,0 +1,281 @@
+@import "shared/variables";
+
+@import "mixins/css3";
+@import "mixins/utilities";
+
+@import "partials/search_results/search";
+
+
+#search-filters-sidebar {
+  @include transition( width $trns-medium-ease);
+  position: fixed;
+  left: 0;
+  top: 50px;
+  bottom: 0;
+  width: 20%;
+  z-index: 10;
+
+  section {
+    @include transition(height $trns-medium-ease);
+    height: 30%;
+
+    &:first-child {
+      height: 70%;
+    }
+
+    fieldset {
+      @include transition(opacity $trns-medium-ease);
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    section {
+      height: 10%;
+    }
+
+    fieldset {
+      opacity: 0;
+    }
+  }
+
+  section:hover {
+    height: 90%;
+
+    fieldset {
+      opacity: 1;
+    }
+  }
+}
+
+#search-results {
+  @include box-sizing(border-box);
+  position: absolute;
+  padding-top: 50px;
+  left: 0;
+  padding-left: 20%;
+  width: 100%;
+
+  .sort-options-wrap {
+    @include transition(
+      width $trns-medium-ease
+    );
+    @include transform( translate3d(0,0,0) );
+    opacity: 1;
+    width: 75%;
+  }
+
+  .sort-options {
+    @include box-sizing(border-box);
+    @include clearfix;
+    @include flexbox;
+    border: 1px solid $medium-grey;
+    background: $white;
+    margin: 30px 30px 0;
+
+    label, a {
+      flex-grow: 1;
+      float: left;
+      line-height: 44px;
+      padding: 0 10px;
+      height: 44px;
+      border-right: 1px solid $medium-grey;
+      position: relative;
+      text-align: center;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    label {
+      background: $dark-blue;
+      color: $white;
+      border: none;
+      margin: 0;
+    }
+
+    a {
+      cursor: pointer;
+
+      &:hover {
+        background: lighten($light-blue, 45%);
+      }
+
+      &.active {
+        background: $light-blue;
+        color: $white;
+
+        &:after {
+          content: '';
+          position: absolute;
+          height: 0;
+          width: 0;
+          border-top: 8px solid $light-blue;
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          top: 100%;
+          left: 50%;
+          margin-left: -4px;
+        }
+      }
+    }
+
+    select {
+      display: none;
+    }
+  }
+
+  .search-results-wrap {
+    @include transition(width $trns-medium-ease);
+    width: 75%;
+    float: left;
+    min-height: 1px;
+  }
+
+  @import "partials/search_results/hotel_listing";
+}
+
+#right-sidebar {
+  @include transition( transform $trns-medium-ease);
+  @include transform(translate3d(0,0,0));
+  @include box-sizing(border-box);
+  float: right;
+  width: 25%;
+  margin: -46px 0 0;
+  padding-right: 30px;
+
+  section {
+    margin-bottom: 30px;
+  }
+
+  .map {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    background: $map-grey;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .review-center-score {
+    border: 1px solid $medium-grey;
+    padding: 15px;
+
+    h3 {
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid $medium-grey;
+      line-height: 1.1em;
+      text-align: center;
+    }
+
+    img {
+      display: block;
+      margin: 10px auto;
+    }
+  }
+}
+
+.expanded-listing-wrap {
+  @include transition( transform $trns-medium-ease);
+  @include transform(translate3d(100%,0,0));
+  position: absolute;
+  width: 75%;
+  text-align: center;
+  top: 70px;
+  left: 25%;
+}
+
+#search-results-main.expanded-listing {
+
+  #search-filters-sidebar {
+    width: 50px;
+
+    form {
+      display: none;
+    }
+  }
+
+  #search-results {
+    padding-left: 60px;
+  }
+
+  .sort-options-wrap,
+  .search-results-wrap {
+    width: 25%;
+  }
+
+  .sort-options-wrap {
+
+    a {
+      display: none;
+    }
+
+    select {
+      display: block;
+      width: 66%;
+      height: 44px;
+    }
+  }
+
+  .hotel-listing {
+    .hotel-thumbnail {
+      width: 100%;
+      padding-bottom: 50%;
+      overflow: hidden;
+      max-width: 400px;
+
+      img {
+        @include transform(translateY(-50%));
+        height: auto;
+        top: 50%;
+      }
+    }
+
+    .hotel-details {
+      width: 100%;
+
+      h3 {
+        padding: 0;
+      }
+
+      .stars {
+        top: -25px;
+        right: 5px;
+      }
+
+      .desc {
+        display: none;
+      }
+    }
+
+    .hotel-meta {
+      @include clearfix;
+      clear: both;
+      position: relative;
+      width: 100%;
+      left: 0;
+
+      .price {
+        display: none;
+      }
+    }
+  }
+
+  #right-sidebar {
+    // @include transform(translate3d(100%,0,0));
+    display: none;
+  }
+
+  .expanded-listing-wrap {
+    @include transform(translate3d(0,0,0));
+  }
+}

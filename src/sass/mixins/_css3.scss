@@ -1,0 +1,39 @@
+@mixin prefixer($rule-key, $rule-value) {
+  -webkit-#{$rule-key}: $rule-value;
+     -moz-#{$rule-key}: $rule-value;
+      -ms-#{$rule-key}: $rule-value;
+       -o-#{$rule-key}: $rule-value;
+          #{$rule-key}: $rule-value;
+}
+
+@mixin border-radius($radius) {
+  @include prefixer(border-radius, $radius);
+}
+
+@mixin transition($transitions...) {
+  @include prefixer(transition, $transitions);
+}
+
+@mixin transform($transforms...) {
+  @include prefixer(transform, $transforms);
+}
+
+@mixin transform-origin($origin) {
+  @include prefixer(transform-origin, $origin);
+}
+
+@mixin background-size($size) {
+  @include prefixer(background-size, $size);
+}
+
+@mixin box-sizing($sizeType) {
+  @include prefixer(box-sizing, $sizeType);
+}
+
+@mixin flexbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}

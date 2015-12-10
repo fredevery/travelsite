@@ -1,0 +1,175 @@
+.hotel-listing {
+  @include transition(
+    transform $trns-quick-linear
+  );
+  @include box-sizing(border-box);
+  @include clearfix;
+  margin: 20px 30px 0;
+  border: 1px solid $medium-grey;
+  position: relative;
+  cursor: pointer;
+
+  &:first-child {
+    margin-top: 30px;
+  }
+
+  &:last-child {
+    margin-bottom: 30px;
+  }
+
+  &:hover {
+  }
+
+  .hotel-thumbnail {
+    padding-bottom: 30%;
+    width: 30%;
+    height: 0;
+    position: relative;
+    float: left;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .hotel-details {
+    @include box-sizing(border-box);
+    width: 70%;
+    float: left;
+    padding: 15px 15px 50px;
+    position: relative;
+
+    .stars {
+      background-image: url('/build/imgs/hotel_listings/star.svg');
+      background-repeat: repeat-x;
+      background-size: 18px 18px;
+      height: 18px;
+      width: 18px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+
+      @for $i from 1 through 5 {
+        &[data-stars="#{$i}"] {
+          width: 18px * $i;
+        }
+      }
+    }
+
+    h3 {
+      font-weight: normal;
+      padding-right: 18px * 6;
+    }
+
+    .location {
+      color: $light-blue;
+    }
+
+    .desc {
+      margin-top: 10px;
+    }
+  }
+
+  button.blue {
+    position: absolute;
+    bottom: 36px;
+    right: 5px;
+  }
+
+  .hotel-meta {
+    background: $light-blue;
+    color: $white;
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    right: 0;
+
+    p {
+      float: left;
+      padding: 10px;
+      border-right: 1px solid lighten($light-blue, 15%);
+      font-size: 0.8em;
+      line-height: 1;
+    }
+
+    .rating {
+      position: relative;
+      padding-left: 52px;
+
+      em {
+        @include border-radius(50%);
+        background: $dark-blue;
+        line-height: 40px;
+        height: 40px;
+        width: 40px;
+        font-size: 1.2em;
+        bottom: 100%;
+        vertical-align: middle;
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        margin-top: -20px;
+        text-align: center;
+      }
+    }
+
+    .hearts {
+      padding-left: 25px;
+      position: relative;
+
+      &:before {
+        content: '';
+        background-image: url('/build/imgs/hotel_listings/heart.svg');
+        background-repeat: repeat-x;
+        background-size: 14px 14px;
+        position: absolute;
+        left: 6px;
+        top: 8px;
+        height: 14px;
+        width: 14px;
+      }
+    }
+
+    .price {
+      float: right;
+      border-right: none;
+      border-left: 1px solid lighten($light-blue, 15%);
+    }
+  }
+
+  .badges {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+
+    i {
+      // @include border-radius(50%);
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 30px;
+      width: 30px;
+      margin-bottom: -2px;
+      display: none;
+      border: 2px solid $white;
+
+      &.preferred-property {
+        background-image: url('/build/imgs/hotel_listings/thumb.svg');
+        background-color: $yellow;
+      }
+
+      &.smart-deal {
+        background-image: url('/build/imgs/hotel_listings/lightbulb.svg');
+        background-color: $orange;
+      }
+
+      &[data-visible="true"] {
+        display: block;
+      }
+    }
+  }
+}

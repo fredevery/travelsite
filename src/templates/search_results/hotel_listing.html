@@ -1,0 +1,31 @@
+<section class="hotel-listing" data-href="{{url}}">
+  <div class="hotel-thumbnail">
+    <img src="{{thumbnail.src}}" alt="{{thumbnail.alt}}">
+  </div>
+
+  <div class="hotel-details">
+    <h3>{{name}}</h3>
+    <p class="location">{{location}}</p>
+    <div class="stars" data-stars="{{starCount}}"></div>
+    <p class="desc">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam id dolor id nibh ultricies vehicula ut id elit.
+    </p>
+  </div>
+
+  <button class="blue">Book now!</button>
+
+  <div class="badges">
+    <i class="preferred-property" data-visible="{{preferred}}"></i>
+    <i class="smart-deal" data-visible="{{smartDeal}}"></i>
+  </div>
+
+  <div class="hotel-meta">
+    <p class="rating">
+      <em>{{rating.score}}</em>
+      {{rating.label}}
+    </p>
+    <p>{{reviewCount}}</p>
+    <p class="hearts">{{heartCount}}</p>
+    <p class="price">From {{price}}</p>
+  </div>
+</section>
